@@ -3,14 +3,18 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start-all": "nx serve fsd-act-host --open --devRemotes=fsd-act-customer-ui"
+    "start-all": "nx serve fsd-act-host --open --devRemotes=fsd-act-customer-ui",
+    "start-customer-ui": "nx serve fsd-act-customer-ui --open"
   },
   "private": true,
   "dependencies": {
+    "@tanstack/react-query": "^4.24.10",
+    "axios": "^1.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-is": "18.2.0",
     "react-router-dom": "6.4.3",
+    "react-use": "^17.4.0",
     "styled-components": "5.3.6",
     "tslib": "^2.3.0"
   },
