@@ -1,18 +1,56 @@
-import styled from 'styled-components';
+import React from 'react';
+// import { IUser } from '../api/types';
 
-/* eslint-disable-next-line */
-export interface AuthServiceProps {}
+type State = {
+  authUser: any
+};
 
-const StyledAuthService = styled.div`
-  color: pink;
-`;
+type Action = {
+  type: string;
+  payload: any
+};
 
-export function AuthService(props: AuthServiceProps) {
+type Dispatch = (action: Action) => void;
+
+const initialState: State = {
+  authUser: null,
+};
+
+type AuthContextProviderProps = { children: React.ReactNode };
+
+const StateContext = React.createContext<
+  { state: State; dispatch: Dispatch } | undefined
+>(undefined);
+
+const stateReducer = (state: State, action: Action) => {
+  switch (action.type) {
+    case 'SET_USER': {
+      return {
+        ...state,
+        authUser: action.payload,
+      };
+    }
+    default: {
+      throw new Error(`Unhandled action type`);
+    }
+  }
+};
+
+export function AuthContextProvider({ children }: AuthContextProviderProps) {
+  const [state, dispatch] = React.useReducer(stateReducer, initialState);
   return (
-    <StyledAuthService>
-      <h1>Welcome to AuthService!</h1>
-    </StyledAuthService>
+    <StateContext.Provider value={{ state, dispatch }}>{children}</StateContext.Provider>
   );
-}
+};
 
-export default AuthService;
+export const useStateContext = () => {
+  const context = React.useContext(StateContext);
+
+  if (context) {
+    return context;
+  }
+
+  throw new Error(`useStateContext must be used within a AuthContextProvider`);
+};
+
+export default AuthContextProvider

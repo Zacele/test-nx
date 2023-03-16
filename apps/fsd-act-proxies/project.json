@@ -1,0 +1,64 @@
+{
+  "name": "fsd-act-proxies",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/fsd-act-proxies/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/fsd-act-proxies",
+        "main": "apps/fsd-act-proxies/src/main.ts",
+        "tsConfig": "apps/fsd-act-proxies/tsconfig.app.json",
+        "assets": ["apps/fsd-act-proxies/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/fsd-act-proxies/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "fsd-act-proxies:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "fsd-act-proxies:build:development"
+        },
+        "production": {
+          "buildTarget": "fsd-act-proxies:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/fsd-act-proxies/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/fsd-act-proxies/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

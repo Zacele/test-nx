@@ -9,6 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
+        "proxyConfig": "apps/fsd-act-customer-ui/proxy.conf.json",
         "compiler": "babel",
         "outputPath": "dist/apps/fsd-act-customer-ui",
         "index": "apps/fsd-act-customer-ui/src/index.html",
@@ -53,6 +54,7 @@
       "defaultConfiguration": "development",
       "options": {
         "buildTarget": "fsd-act-customer-ui:build",
+        "proxyConfig": "apps/fsd-act-customer-ui/proxy.conf.json",
         "hmr": true,
         "port": 4201
       },

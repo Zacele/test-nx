@@ -54,7 +54,8 @@
       "options": {
         "buildTarget": "fsd-act-host:build",
         "hmr": true,
-        "port": 4200
+        "port": 4200,
+        "proxyConfig": "apps/fsd-act-host/proxy.conf.json"
       },
       "configurations": {
         "development": {

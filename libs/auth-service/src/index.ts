@@ -1,1 +1,1 @@
-export * from './lib/auth-service';
+export { AuthContextProvider, useStateContext }from './lib/auth-service';
