@@ -1,6 +1,12 @@
 {
-  "/api": {
-    "target": "http://localhost:3000",
-    "secure": false
+  "/fact": {
+    "target": "https://catfact.ninja",
+    "secure": true,
+    "changeOrigin": true
+  },
+  "/auth": {
+    "target": "https://pp-fsd-act.metronom.com",
+    "secure": true,
+    "changeOrigin": true
   }
 }

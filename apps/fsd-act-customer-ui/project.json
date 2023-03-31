@@ -56,7 +56,7 @@
         "buildTarget": "fsd-act-customer-ui:build",
         "proxyConfig": "apps/fsd-act-customer-ui/proxy.conf.json",
         "hmr": true,
-        "port": 4201
+        "port": 8080
       },
       "configurations": {
         "development": {
