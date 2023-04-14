@@ -1,15 +1,17 @@
 import React from 'react';
 import { getForAuth } from '../../../helpers/fetchHelper';
+import { redirect } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
   const baseUrl = window.origin;
 
   const redirectToIDAM = () => {
-    getForAuth(`/auth/login?redirect_host=${baseUrl}/`)
+    getForAuth(`/auth/login?redirect_host=${baseUrl}`)
       .then((response) => {
-        console.log('response: ', response);
+        console.log('response.url: ', response.url);
+        window.location.replace(response.url);
       })
-      .catch((errResponse) => console.error('errResponse', errResponse));
+      .catch((errResponse) => console.error(errResponse));
   };
 
   return (
